@@ -1,0 +1,64 @@
+find()
+
+db.document.find({}, {});
+
+测试数据:
+db.blog.find();
+{ "_id" : ObjectId("5544583c4bf869a207e1398b"), "title" : "Mac Air", "content" : "my love ...", "comments" : [ { "name" : "zwl", "email" : "myos@zios.com", "content" : "i love you" } ], "authors" : [ "abc" ] }
+{ "_id" : ObjectId("554242544bf869a207e13989"), "web" : "http://myos.me", "score" : -300, "authors" : [ "abc", "abc", "abc", "asd", "asdh" ], "author" : [ "asd" ] }
+
+1.指定返回的键;
+如:找出有web的并返回web值
+db.blog.find({}, {'web':1})
+{ "_id" : ObjectId("5544583c4bf869a207e1398b") }
+{ "_id" : ObjectId("554242544bf869a207e13989"), "web" : "http://myos.me" }
+
+如:找出的数据中不含有web的值(找出所有数据,除去web的值)
+db.blog.find({}, {'web':0})
+{ "_id" : ObjectId("5544583c4bf869a207e1398b"), "title" : "Mac Air", "content" : "my love ...", "comments" : [ { "name" : "zwl", "email" : "myos@zios.com", "content" : "i love you" } ], "authors" : [ "abc" ] }
+{ "_id" : ObjectId("554242544bf869a207e13989"), "score" : -300, "authors" : [ "abc", "abc", "abc", "asd", "asdh" ], "author" : [ "asd" ] }
+
+*不显示id
+> db.blog.find({}, {'web':0, '_id':0})
+{ "title" : "Mac Air", "content" : "my love ...", "comments" : [ { "name" : "zwl", "email" : "myos@zios.com", "content" : "i love you" } ], "authors" : [ "abc" ] }
+{ "score" : -300, "authors" : [ "abc", "abc", "abc", "asd", "asdh" ], "author" : [ "asd" ] }
+
+
+查询条件
+———————————————————————————
+$lt   <    小于
+$lte  <=   小于等于
+$gt   >    大于
+$gte  >=   大于等于
+$ne   !=   不相等
+$in        在指定的数组内     find({fruit:{$all:['apple','西瓜']}}) 找到有apple或是西瓜的数据
+$nin       不在指定的数组内 
+$or        或  
+$mod       取余
+$not       不包含
+$all       同时存在数组的     find({fruit:{$all:['apple','西瓜']}}) 找到同时有apple和西瓜的数据
+———————————————————————————————————————————————————————————————————————————————————————
+
+如:找到分数小于0大于-400的数据;
+db.blog.find({'score':{'$lt' :0, '$gt': -400}});
+{ "_id" : ObjectId("554242544bf869a207e13989"), "web" : "http://myos.me", "score" : -300, "authors" : [ "abc", "abc", "abc", "asd", "asdh" ], "author" : [ "asd" ] }
+
+如:找到分数不是-300的数据
+> db.blog.find({'score':{'$ne': -300}});
+{ "_id" : ObjectId("5544583c4bf869a207e1398b"), "title" : "Mac Air", "content" : "my love ...", "comments" : [ { "name" : "zwl", "email" : "myos@zios.com", "content" : "i love you" } ], "authors" : [ "abc" ] }
+
+如:找到分数在[0,'abc',-300]这些分数或内容
+> db.blog.find({'score':{'$in':[0,'abc', -300]}});
+{ "_id" : ObjectId("554242544bf869a207e13989"), "web" : "http://myos.me", "score" : -300, "authors" : [ "abc", "abc", "abc", "asd", "asdh" ], "author" : [ "asd" ] }
+
+如:找到分数不在[0,'abc',-300]这些分数或内容
+> db.blog.find({'score':{'$nin':[0,'abc', -300]}});
+{ "_id" : ObjectId("5544583c4bf869a207e1398b"), "title" : "Mac Air", "content" : "my love ...", "comments" : [ { "name" : "zwl", "email" : "myos@zios.com", "content" : "i love you" } ], "authors" : [ "abc" ] }
+
+如:查找标题为mac air或是作者是asd
+> db.blog.find({'$or':[{'title':'Mac Air'},{'author':'asd'}]})
+{ "_id" : ObjectId("5544583c4bf869a207e1398b"), "title" : "Mac Air", "content" : "my love ...", "comments" : [ { "name" : "zwl", "email" : "myos@zios.com", "content" : "i love you" } ], "authors" : [ "abc" ] }
+{ "_id" : ObjectId("554242544bf869a207e13989"), "web" : "http://myos.me", "score" : -300, "authors" : [ "abc", "abc", "abc", "asd", "asdh" ], "author" : [ "asd" ] }
+
+
+

@@ -1,0 +1,54 @@
+
+一. 安装
+1.下载对应版本 http://www.mongodb.org/downloads; 选择默认MSI安装版或是选择 View Build Archive 进行压缩包下载
+2. Installation Instructions 是相关的教程文档
+3. 创建数据库存放位置
+Windows:
+如果不想更改位置，默认要在 c: 下创建Data并在其中加db(用于放数据库）和logs（用于放日志)
+更改位置，在你要保存的位置下创建以上文件夹
+在logs中新建以.log为后缀的文件如new.log,可以用于一下方式指定logs(日志)的存放位置
+1). C:\Program Files\MongoDB\Server\3.0\bin>mongod.exe --dbpath E:/data/db -director
+yperdb --logpath=E:\data\logs\mongodb.log --logappend
+
+2). C:\Program Files\MongoDB\Server\3.0\bin>mongod.exe --dbpath E:/data/db --logpath=E:\data\logs\mongodb.log --logappend
+
+
+二. 启动
+Windows:
+1. cd C:/"program files"/mongoDB/server/3.0/bin
+
+2. 默认c：下的数据库
+C:/program files/mongoDB/server/3.0/bin>mongod.exe
+或是指定在e:data下的数据库
+C:\Program Files\MongoDB\Server\3.0\bin>mongod.exe --dbpath E:/data
+
+指定日志：
+C:\Program Files\MongoDB\Server\3.0\bin>mongod.exe --dbpath E:/data/db -director
+yperdb --logpath=E:\data\logs\mongodb.log --logappend
+
+出现类似如下文字表示正常开启：
+2015-03-20T09:01:45.513+0800 I NETWORK  [initandlisten] waiting for connections
+on port 27017
+
+验证：
+可以在浏览器中输入：localhost:27017,
+页面输出：It looks like you are trying to access MongoDB over HTTP on the native driver port.
+表示正常使用
+
+三. 命令行控制
+1. cd  C:/"program files"/mongoDB/server/3.0/bin
+2. C:/"program files"/mongoDB/server/3.0/bin>mongo
+控制台输出：
+MongoDB shell version: 3.0.1
+connecting to: test
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+        http://docs.mongodb.org/
+Questions? Try the support group
+        http://groups.google.com/group/mongodb-user
+>
+3. 输入你的代码，可以是数据语句也可是js代码测试
+
+四. 关闭
+ctrl + c
