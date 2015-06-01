@@ -3,7 +3,6 @@
 	-----------------------------------------
 	zwl <myos.me>                   2015-5-17
 */
-var 
 var Mongoose = require('mongoose');
 
 // connect db
