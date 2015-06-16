@@ -1,0 +1,33 @@
+﻿创建用户:
+use zios
+# 在 zios 中创建 zios 用户,密码为 1234
+> db.createUser({user:'zios',pwd:'1234',roles:[]})
+Successfully added user: { "user" : "zios", "roles" : [ ] }
+
+登录 zios
+C:\Program Files\MongoDB\Server\3.0\bin>mongo -u zios -p 1234 --authenticationDatabase zios
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+http://www.jb51.net/article/53830.htm
+http://docs.mongodb.org/manual/reference/method/db.createUser/#create-administrative-user-with-roles
