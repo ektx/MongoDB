@@ -1,4 +1,4 @@
-﻿1.db 查看当前使用的数据库
+1.db 查看当前使用的数据库
 > db
 test
 
@@ -11,5 +11,17 @@ findOne 返回集合中的一个文档。
 4.更新
 update(限定条件, 新内容)
 
+
 5.删除
 remove 永久删除文档
+=======
+5.
+remove 
+6.db.version() 
+
+7.db.runCommand({getLastError:1}) 
+
+8.db.mycoll.drop() ɾ?????
+
+9.db.Database() ɾ????ݿ?
+10.db.getCollections(?????????)  Stashed changes
