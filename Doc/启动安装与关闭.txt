@@ -1,44 +1,44 @@
-
-Ò». °²×°
-1.ÏÂÔØ¶ÔÓ¦°æ±¾ http://www.mongodb.org/downloads; Ñ¡ÔñÄ¬ÈÏMSI°²×°°æ»òÊÇÑ¡Ôñ View Build Archive ½øÐÐÑ¹Ëõ°üÏÂÔØ
-2. Installation Instructions ÊÇÏà¹ØµÄ½Ì³ÌÎÄµµ
-3. ´´½¨Êý¾Ý¿â´æ·ÅÎ»ÖÃ
+ï»¿
+ä¸€. å®‰è£…
+1.ä¸‹è½½å¯¹åº”ç‰ˆæœ¬ http://www.mongodb.org/downloads; é€‰æ‹©é»˜è®¤MSIå®‰è£…ç‰ˆæˆ–æ˜¯é€‰æ‹© View Build Archive è¿›è¡ŒåŽ‹ç¼©åŒ…ä¸‹è½½
+2. Installation Instructions æ˜¯ç›¸å…³çš„æ•™ç¨‹æ–‡æ¡£
+3. åˆ›å»ºæ•°æ®åº“å­˜æ”¾ä½ç½®
 Windows:
-Èç¹û²»Ïë¸ü¸ÄÎ»ÖÃ£¬Ä¬ÈÏÒªÔÚ c: ÏÂ´´½¨Data²¢ÔÚÆäÖÐ¼Ódb(ÓÃÓÚ·ÅÊý¾Ý¿â£©ºÍlogs£¨ÓÃÓÚ·ÅÈÕÖ¾)
-¸ü¸ÄÎ»ÖÃ£¬ÔÚÄãÒª±£´æµÄÎ»ÖÃÏÂ´´½¨ÒÔÉÏÎÄ¼þ¼Ð
-ÔÚlogsÖÐÐÂ½¨ÒÔ.logÎªºó×ºµÄÎÄ¼þÈçnew.log,¿ÉÒÔÓÃÓÚÒ»ÏÂ·½Ê½Ö¸¶¨logs(ÈÕÖ¾)µÄ´æ·ÅÎ»ÖÃ
+å¦‚æžœä¸æƒ³æ›´æ”¹ä½ç½®ï¼Œé»˜è®¤è¦åœ¨ c: ä¸‹åˆ›å»ºDataå¹¶åœ¨å…¶ä¸­åŠ db(ç”¨äºŽæ”¾æ•°æ®åº“ï¼‰å’Œlogsï¼ˆç”¨äºŽæ”¾æ—¥å¿—)
+æ›´æ”¹ä½ç½®ï¼Œåœ¨ä½ è¦ä¿å­˜çš„ä½ç½®ä¸‹åˆ›å»ºä»¥ä¸Šæ–‡ä»¶å¤¹
+åœ¨logsä¸­æ–°å»ºä»¥.logä¸ºåŽç¼€çš„æ–‡ä»¶å¦‚new.log,å¯ä»¥ç”¨äºŽä¸€ä¸‹æ–¹å¼æŒ‡å®šlogs(æ—¥å¿—)çš„å­˜æ”¾ä½ç½®
 1). C:\Program Files\MongoDB\Server\3.0\bin>mongod.exe --dbpath E:/data/db -director
 yperdb --logpath=E:\data\logs\mongodb.log --logappend
 
 2). C:\Program Files\MongoDB\Server\3.0\bin>mongod.exe --dbpath E:/data/db --logpath=E:\data\logs\mongodb.log --logappend
 
 
-¶þ. Æô¶¯
+äºŒ. å¯åŠ¨
 Windows:
 1. cd C:/"program files"/mongoDB/server/3.0/bin
 
-2. Ä¬ÈÏc£ºÏÂµÄÊý¾Ý¿â
+2. é»˜è®¤cï¼šä¸‹çš„æ•°æ®åº“
 C:/program files/mongoDB/server/3.0/bin>mongod.exe
-»òÊÇÖ¸¶¨ÔÚe:dataÏÂµÄÊý¾Ý¿â
+æˆ–æ˜¯æŒ‡å®šåœ¨e:dataä¸‹çš„æ•°æ®åº“
 C:\Program Files\MongoDB\Server\3.0\bin>mongod.exe --dbpath E:/data
 
-Ö¸¶¨ÈÕÖ¾£º
+æŒ‡å®šæ—¥å¿—ï¼š
 C:\Program Files\MongoDB\Server\3.0\bin>mongod.exe --dbpath E:/data/db -director
 yperdb --logpath=E:\data\logs\mongodb.log --logappend
 
-³öÏÖÀàËÆÈçÏÂÎÄ×Ö±íÊ¾Õý³£¿ªÆô£º
+å‡ºçŽ°ç±»ä¼¼å¦‚ä¸‹æ–‡å­—è¡¨ç¤ºæ­£å¸¸å¼€å¯ï¼š
 2015-03-20T09:01:45.513+0800 I NETWORK  [initandlisten] waiting for connections
 on port 27017
 
-ÑéÖ¤£º
-¿ÉÒÔÔÚä¯ÀÀÆ÷ÖÐÊäÈë£ºlocalhost:27017,
-Ò³ÃæÊä³ö£ºIt looks like you are trying to access MongoDB over HTTP on the native driver port.
-±íÊ¾Õý³£Ê¹ÓÃ
+éªŒè¯ï¼š
+å¯ä»¥åœ¨æµè§ˆå™¨ä¸­è¾“å…¥ï¼šlocalhost:27017,
+é¡µé¢è¾“å‡ºï¼šIt looks like you are trying to access MongoDB over HTTP on the native driver port.
+è¡¨ç¤ºæ­£å¸¸ä½¿ç”¨
 
-Èý. ÃüÁîÐÐ¿ØÖÆ
+ä¸‰. å‘½ä»¤è¡ŒæŽ§åˆ¶
 1. cd  C:/"program files"/mongoDB/server/3.0/bin
 2. C:/"program files"/mongoDB/server/3.0/bin>mongo
-¿ØÖÆÌ¨Êä³ö£º
+æŽ§åˆ¶å°è¾“å‡ºï¼š
 MongoDB shell version: 3.0.1
 connecting to: test
 Welcome to the MongoDB shell.
@@ -48,7 +48,12 @@ For more comprehensive documentation, see
 Questions? Try the support group
         http://groups.google.com/group/mongodb-user
 >
-3. ÊäÈëÄãµÄ´úÂë£¬¿ÉÒÔÊÇÊý¾ÝÓï¾äÒ²¿ÉÊÇjs´úÂë²âÊÔ
+3. è¾“å…¥ä½ çš„ä»£ç ï¼Œå¯ä»¥æ˜¯æ•°æ®è¯­å¥ä¹Ÿå¯æ˜¯jsä»£ç æµ‹è¯•
 
-ËÄ. ¹Ø±Õ
-ctrl + c
+å››. å…³é—­
+1. ctrl + c
+2. shutdownServer()
+å‘½ä»¤åœ¨adminæ•°æ®åº“ä¸‹,å› æ­¤:
+> use admin
+switched to db admin
+> db.shutdownServer()

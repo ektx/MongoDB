@@ -1,15 +1,15 @@
-1.db �鿴��ǰʹ�õ����ݿ�
+﻿1.db 查看当前使用的数据库
 > db
 test
 
-2.insert ���룬�½�
+2.insert 插入，新建
 
-3.��ȡ
-find ���ؼ����������е��ĵ���Ĭ����ʾ20���ĵ�
-findOne ���ؼ����е�һ���ĵ���
+3.读取
+find 返回集合里面所有的文档；默认显示20个文档
+findOne 返回集合中的一个文档。
 
-4.����
-update(�޶�����, ������)
+4.更新
+update(限定条件, 新内容)
 
-5.ɾ��
-remove ����ɾ���ĵ�
+5.删除
+remove 永久删除文档
