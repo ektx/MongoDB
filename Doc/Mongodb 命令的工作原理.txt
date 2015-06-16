@@ -1,0 +1,13 @@
+Mongodb 命令的工作原理
+
+1.drop() 删除功能,删除一个集合
+db.c.drop();
+
+使用runCommand来模拟drop:
+db.runCommand({“drop”:”test”});
+// 插入测试数据
+> db.xx.insert({'test':'string'});
+WriteResult({ "nInserted" : 1 })
+// 删除数据
+> db.runCommand({'drop':'xx'});
+{ "ns" : "zios.xx", "nIndexesWas" : 1, "ok" : 1 }
