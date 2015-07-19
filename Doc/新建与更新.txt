@@ -68,6 +68,10 @@ db.blog.update({'authors':{'$ne’:’zwl’}}, {$push: {'authors’:’zwl’}}
 3.8 $pull 删除,删除匹配的元素
 
 
+3.9 更新所有数据
+// 为所有用户表中的数据添加一个ico属性 最后一个true 为查找到的所有数据,false 则表示只更新找到的第一条
+db.usrs.update({},{'$set':{'ico':'kings.png'}},false, true);
+
 
 
 

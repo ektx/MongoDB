@@ -13,10 +13,10 @@ update(限定条件, 新内容)
 
 
 5.删除
-remove 永久删除文档
-=======
-5.
-remove 
+5.1 remove({name: val}) 删除文档中指定信息
+5.2 drop()   删除整个文档
+
+
 6.db.version() 
 
 7.db.runCommand({getLastError:1}) 
