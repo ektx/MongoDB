@@ -24,7 +24,7 @@
 
 > { "_id" : ObjectId("5569c2888db2acb244b545ad"), "name" : "allApps", "version" : "0.0.1" }
 
-我们再从上面的数据中返回除 apps 的所有数据:
+我们再从上面的数据中返回除 `apps` 的所有数据:
 
 > db.osApp.find({}, {'apps': 0});
 
@@ -151,18 +151,36 @@ db.nums.find({
 
 
 
-# 特定类型的查询
+## 特定类型的查询
 
 1. null 不公可以匹配 null,还可以匹配到不存在的内容.
 2. $exists 用于判断是否存在
 3. $all 所有,同时都有  {'$all': [a, b]}
 
-# sort() 顺序
 
-倒序查询出来的数据
+
+## limit skip & sort
+
+- limit
+查询3个指定内容  
+> db.c.find({}).limit(3)  
+* 最多3个,少了则全部
+
+- skip
+跳过前3个内容,返回余下的所有内容  
+> db.c.find({}).skip(3)  
+
+- sort() 顺序
+
+倒序查询出来的数据,1表示升序 -1表示降序
 
 > db.c.find().sort({'_id':-1})
 
+按照'usrname'升序,'age'降序
+> db.c.find().sort({usrname:1, age: -1})
+
+查询50条内容之后的50条数据,并按`usrname`升序和`age`降序
+> db.find().limit(50).skip(50).sort({usrname:1, age: -1})  
 
 
 注 db.c.find() 中的 c 代指所要用到的集合
