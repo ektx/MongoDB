@@ -17,9 +17,9 @@ update(限定条件, 新内容)
 5.2 drop()   删除整个文档
 
 
-6.db.version() 
+6.db.version() 查看当前数据库版本
 
-7.db.runCommand({getLastError:1}) 
+7.db.runCommand({getLastError:1}) 查询刚才的指令运行详细
 
 8.db.mycoll.drop() ɾ?????
 

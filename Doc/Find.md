@@ -37,9 +37,13 @@
 
 
 查找到子文档中的指定数据输出,如下文档
+
 > { 'name' : {'zh':'中文','us':'English'}}
+> 
 > db.c.find({}, {'name.zh':1})
+> 
 > { 'name' : {'zh':'中文'}}
+
 这样 us 就不会出现了
 
 ## 查询条件
@@ -162,14 +166,19 @@ db.nums.find({
 ## limit skip & sort
 
 - limit
-查询3个指定内容  
-> db.c.find({}).limit(3)  
-* 最多3个,少了则全部
-
+  
+  查询3个指定内容  
+  
+  > db.c.find({}).limit(3)  
+  
+- 最多3个,少了则全部
+  
 - skip
-跳过前3个内容,返回余下的所有内容  
-> db.c.find({}).skip(3)  
-
+  
+  跳过前3个内容,返回余下的所有内容  
+  
+  > db.c.find({}).skip(3)  
+  
 - sort() 顺序
 
 倒序查询出来的数据,1表示升序 -1表示降序
@@ -177,10 +186,13 @@ db.nums.find({
 > db.c.find().sort({'_id':-1})
 
 按照'usrname'升序,'age'降序
+
 > db.c.find().sort({usrname:1, age: -1})
 
 查询50条内容之后的50条数据,并按`usrname`升序和`age`降序
+
 > db.find().limit(50).skip(50).sort({usrname:1, age: -1})  
+
 
 
 注 db.c.find() 中的 c 代指所要用到的集合
