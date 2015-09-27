@@ -21,8 +21,8 @@
 > db.osApp.find({}, {'name': 1, 'version': 1});
 
 mongoose使用方法:
-> osAppSchemas.find({}, '-_id name version');
-或
+> osAppSchemas.find({}, '-_id name version');  
+或  
 > osAppSchemas.find({}, {'_id':0, name':1, 'version':1}) 
 *_id默认都会输出,所以加在说明
 
@@ -89,13 +89,14 @@ mongoose使用方法:
 
 ``` json
 db.nums.insert([
-	{'num':[2,5,6]},
-	{'num':[123,456]},
-	{'num': [123,456,789]},
-	{'num': [123,456,789,0]}
+	{"num": [2,5,6] },
+	{"num": [123,456] },
+	{"num": [123,456,789] },
+	{"num": [123,456,789,0] }
 ]);
 ```
 
+``` sh
 > db.nums.find()
 
 
@@ -107,6 +108,7 @@ db.nums.insert([
 > { "_id" : ObjectId("55745cdb9fab0416d14c382c"), "num" : [ 123, 456, 789 ] }
 > 
 > { "_id" : ObjectId("55745cdb9fab0416d14c382d"), "num" : [ 123, 456, 789, 0 ] }
+```
 
 1.查询有 123 或 456 或 789 的数据
 
@@ -126,7 +128,7 @@ db.nums.insert([
 
 3.查询有 123 或 456 或 789 或是 _id=ObjectId("55745cdb9fab0416d14c382a"
 
-``` json
+``` js
 db.nums.find({
 
 '$or':[
