@@ -42,22 +42,22 @@ mongoose使用方法:
 
 
 查找到子文档中的指定数据输出,如下文档
+```js
+{ 'name' : {'zh':'中文','us':'English'}}
 
-> { 'name' : {'zh':'中文','us':'English'}}
-> 
-> db.c.find({}, {'name.zh':1})
-> 
-> { 'name' : {'zh':'中文'}}
+db.c.find({}, {'name.zh':1})
 
+{ 'name' : {'zh':'中文'}}
+```
 这样 us 就不会出现了
 
 ## 查询条件
 
-- $lt  <  小于
-- $lte <= 小于等于
-- $gt  >  大于
-- $gte >= 大于等于
-- $ne  != 不相等		可以是任何类型的数据间比较
+|| $lt  || <  || 小于
+|| $lte || <= || 小于等于
+|| $gt  || >  || 大于
+|| $gte || >= || 大于等于
+|| $ne  || != || 不相等		可以是任何类型的数据间比较
 
 例子:
 
@@ -96,18 +96,12 @@ db.nums.insert([
 ]);
 ```
 
-``` sh
-> db.nums.find()
-
-
-
-> { "_id" : ObjectId("55745cdb9fab0416d14c382a"), "num" : [ 2, 5, 6 ] }
-> 
-> { "_id" : ObjectId("55745cdb9fab0416d14c382b"), "num" : [ 123, 456 ] }
-> 
-> { "_id" : ObjectId("55745cdb9fab0416d14c382c"), "num" : [ 123, 456, 789 ] }
-> 
-> { "_id" : ObjectId("55745cdb9fab0416d14c382d"), "num" : [ 123, 456, 789, 0 ] }
+``` js
+db.nums.find()
+{ "_id" : ObjectId("55745cdb9fab0416d14c382a"), "num" : [ 2, 5, 6 ] }
+{ "_id" : ObjectId("55745cdb9fab0416d14c382b"), "num" : [ 123, 456 ] }
+{ "_id" : ObjectId("55745cdb9fab0416d14c382c"), "num" : [ 123, 456, 789 ] }
+{ "_id" : ObjectId("55745cdb9fab0416d14c382d"), "num" : [ 123, 456, 789, 0 ] }
 ```
 
 1.查询有 123 或 456 或 789 的数据
