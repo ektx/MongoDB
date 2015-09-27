@@ -20,6 +20,11 @@
 
 > db.osApp.find({}, {'name': 1, 'version': 1});
 
+mongoose使用方法:
+> osAppSchemas.find({}, '-_id name version');
+或
+> osAppSchemas.find({}, {'_id':0, name':1, 'version':1}) 
+*_id默认都会输出,所以加在说明
 
 
 > { "_id" : ObjectId("5569c2888db2acb244b545ad"), "name" : "allApps", "version" : "0.0.1" }
@@ -184,6 +189,10 @@ db.nums.find({
 倒序查询出来的数据,1表示升序 -1表示降序
 
 > db.c.find().sort({'_id':-1})
+
+Mongoose中方法:
+> Module.find({}, {}, {sort: {'_id':-1}}, callback)
+> Module.find().sort({'_id': -1}).exec(callback)
 
 按照'usrname'升序,'age'降序
 
