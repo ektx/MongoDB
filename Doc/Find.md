@@ -1,19 +1,19 @@
 # Find
 
 1. 空的查询文档{}会匹配集合的全部内容.
-   
+
    > db.c.find() 等同于 db.c.find({})
-   
+
 2. 多条件与单个条件查询
-   
+
    > db.c.find({'a':'a_val', 'b':'b_val'});
-   > 
+   >
    > db.c.find({'a':'a_val'});`
-   
+
 3. 指定返回的键(内容)
-   
+
    > db.osApp.find()
-   > 
+   >
    > { "_id" : ObjectId("5569c2888db2acb244b545ad"), "name" : "allApps", "version" : "0.0.1", "deccription" : "用于加载用户应用数据", "apps" : [ { "name" : "笔记", "app" : "Notes" }, { "name" : "日历", "app" : "Date", "canvas" : "drawDateIco" }, { "name" : "音乐", "app" : "Music" }, { "name" : "时钟", "app" : "Clock", "canvas" : "cclock" }, { "name" : "我的浏览器", "app" : "Browseris" }, { "name" : "聊天", "app" : "Chat" }, { "name" : "二维码", "app" : "QRcode" }, { "name" : "商城", "app" : "Store" }, { "name" : "Google", "url" : "http://173.194.1.239/", "app" : "Google" }, { "name" : "Codrops", "url" : "http://tympanus.net/codrops/", "app" : "Codrops" }, { "name" : "实验室", "app" : "Lab" }, { "name" : "进程", "app" : "Ostask" } ] }
 
 从找到的结果中,只返回 name 和 version 的值:
@@ -22,9 +22,10 @@
 
 mongoose使用方法:
 > osAppSchemas.find({}, '-_id name version');  
-或  
+> 或  
 > osAppSchemas.find({}, {'_id':0, name':1, 'version':1}) 
-*_id默认都会输出,所以加在说明
+> *_id默认都会输出,所以加在说明
+
 
 
 > { "_id" : ObjectId("5569c2888db2acb244b545ad"), "name" : "allApps", "version" : "0.0.1" }
@@ -53,12 +54,12 @@ db.c.find({}, {'name.zh':1})
 
 ## 查询条件
 
-| $lt  | <  | 小于 | 
-| -----|----|-----| 
-| $lte | <= | 小于等于|  
-| $gt  | >  | 大于 |  
-| $gte | >= | 大于等于 |  
-| $ne  | != | 不相等		可以是任何类型的数据间比较|  
+| $lt  | <    | 小于                 |
+| ---- | ---- | ------------------ |
+| $lte | <=   | 小于等于               |
+| $gt  | >    | 大于                 |
+| $gte | >=   | 大于等于               |
+| $ne  | !=   | 不相等		可以是任何类型的数据间比较 |
 
 例子:
 
@@ -134,11 +135,11 @@ db.nums.find({
 ```
 
 > { "_id" : ObjectId("55745cdb9fab0416d14c382a"), "num" : [ 2, 5, 6 ] }
-> 
+>
 > { "_id" : ObjectId("55745cdb9fab0416d14c382b"), "num" : [ 123, 456 ] }
-> 
+>
 > { "_id" : ObjectId("55745cdb9fab0416d14c382c"), "num" : [ 123, 456, 789 ] }
-> 
+>
 > { "_id" : ObjectId("55745cdb9fab0416d14c382d"), "num" : [ 123, 456, 789, 0 ] }
 
 ## $mod 取模
@@ -168,19 +169,19 @@ db.nums.find({
 ## limit skip & sort
 
 - limit
-  
+
   查询3个指定内容  
-  
+
   > db.c.find({}).limit(3)  
-  
+
 - 最多3个,少了则全部
-  
+
 - skip
-  
+
   跳过前3个内容,返回余下的所有内容  
-  
+
   > db.c.find({}).skip(3)  
-  
+
 - sort() 顺序
 
 倒序查询出来的数据,1表示升序 -1表示降序
@@ -202,3 +203,16 @@ Mongoose中方法:
 
 
 注 db.c.find() 中的 c 代指所要用到的集合
+
+
+
+## Mongoose
+
+#### 查询统计数量
+
+```javascript
+db.usrs.find({'name':'kings'}).count((err, count)=> {
+  console.log('Find Numbers:', count)
+})
+```
+
