@@ -1,4 +1,4 @@
-# Find
+# Mongodb Find
 
 1. 空的查询文档{}会匹配集合的全部内容.
 
@@ -198,11 +198,44 @@ Mongoose中方法:
 
 查询50条内容之后的50条数据,并按`usrname`升序和`age`降序
 
-> db.find().limit(50).skip(50).sort({usrname:1, age: -1})  
+> db.c.find().limit(50).skip(50).sort({usrname:1, age: -1})  
 
 
 
 注 db.c.find() 中的 c 代指所要用到的集合
+
+
+
+### $elemMatch 
+
+```json
+// 假设有以下数据
+{
+	'usr': 'kings',
+	project: [
+		{'name':'workman', 'private': false},
+		{'name':'iservers', 'private': true}
+	]
+}
+
+// 我们要找出 private: false 的内家,且为 true 的不显示
+db.c.find(
+	{},
+    {
+      project: {
+          $elemMatch: { private: false }
+      },
+      '_id': 0
+    }
+)
+
+// 结果
+{ "project" : [ { "name" : "workman", "private" : false } ] }
+```
+
+[参考](https://docs.mongodb.com/manual/reference/method/db.collection.find/#query-an-array-of-documents)
+
+[参考2](http://stackoverflow.com/questions/16198429/mongodb-how-to-find-out-if-an-array-field-contains-an-element)
 
 
 
