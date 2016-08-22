@@ -214,11 +214,12 @@ Mongoose中方法:
 	'usr': 'kings',
 	project: [
 		{'name':'workman', 'private': false},
-		{'name':'iservers', 'private': true}
+		{'name':'iservers', 'private': true},
+         {'name':'workman', 'private': false}
 	]
 }
 
-// 我们要找出 private: false 的内家,且为 true 的不显示
+// 方法一 我们要找出 private: false 的内容,且为 true 的不显示
 db.c.find(
 	{},
     {
@@ -229,8 +230,16 @@ db.c.find(
     }
 )
 
-// 结果
+// 结果 此方法只会找出一条内容
 { "project" : [ { "name" : "workman", "private" : false } ] }
+
+// 方法二 找出所有 private:false 的
+db.c.aggregate([
+	// 先分组
+	{$unwind: '$priject'},
+	// 然后匹配内容
+	{$match: {'project.private': true }}
+])
 ```
 
 [参考](https://docs.mongodb.com/manual/reference/method/db.collection.find/#query-an-array-of-documents)
