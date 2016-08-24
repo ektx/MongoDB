@@ -28,8 +28,6 @@ db.c.dropIndex({key: 1})
 
 
 
-
-
 ## count 统计
 
 - 返回文档数量  
@@ -55,3 +53,33 @@ db.runCommand({"distinct":"people","key":"type"})
 db.people.distinct('type')
 // => [5, 2013]
 ```
+
+
+## 数据库重命名
+
+##### 方法一:
+
+```javascript
+# 复制数据库并给出新的名字
+db.copyDatabase('old_database', 'new_database')
+# 使用旧的数据库
+use old_database
+# 删除旧的数据库
+db.dropDatabase()
+```
+
+##### 方法二:
+
+```javascript
+mongodump old_database
+mongorestore -db new_database ./dump/old_database
+# 使用旧的数据库
+use old_database
+# 删除旧的数据库
+db.dropDatabase()
+```
+
+##### 参考:
+
+[Rename Mongodb Database](https://devops.profitbricks.com/tutorials/rename-mongodb-database/)
+
