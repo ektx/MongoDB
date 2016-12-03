@@ -1,8 +1,39 @@
+# MongoDB 基础命令
+
+## db
+
+**查看当前使用的数据库**
+
+```shell
+> db
+test
+```
+
+
+
+## find() & findOne()
+
+**find:** 返回集合里面所有的文档,默认显示20个文档
+
+**findOne:** 返回集合中的一个文档
+
+
+
+
+
 ## 插入(新建)  insert()
 
 如在数据库里插入 `name = "zwl"`;
 
-> db.foo.insert({"name": "zwl"})
+```shell
+# 插入单条数据
+db.c.insert({"name": "zwl"})
+
+# 插入多条数据
+db.c.insert([{name:'zwl'},{name:'ektx'}])
+
+# c 表示你的文档
+```
 
 测试是否成功: 
 
@@ -14,23 +45,37 @@
 
 
 
-## 删除文档 remove()
+## 删除
+
+#### 文档 remove()
 
 如,删除之前建的 foo 文档中name=‘zwl’
 
+```shell
 db.foo.remove({'name':'zwl'})
+```
 
+#### 删除文档中的单个内容 delete
 
-
-## 删除文档中的单个内容
-
-{ "_id" : ObjectId("554242544bf869a207e13989"), "bar" : "baz", "web" : "http://myos.me" }
+```sh
+{  
+    "bar" : "baz", 
+    "web" : "http://myos.me" 
+}
+```
 
 删除如上的 web
 
-1.var web = db.blog.findOne({'bar':'baz’});
+```sh
+var web = db.blog.findOne({'bar':'baz'});
+delete web.web
+```
 
-2.delete web.web
+#### 删除整个文档 drop()
+
+```sh
+db.c.drop()
+```
 
 
 
@@ -179,15 +224,16 @@ db.c.update(
 
 
 
+#### 3.9 更新所有数据
 
+为所有用户表中的数据添加一个ico属性 最后一个true 为查找到的所有数据,false 则表示只更新找到的第一条
 
-##### 3.9 更新所有数据
-
-// 为所有用户表中的数据添加一个ico属性 最后一个true 为查找到的所有数据,false 则表示只更新找到的第一条
-
+```javascript
 db.usrs.update({},{'$set':{'ico':'kings.png'}},false, true);
+```
 
 
 
+## version()
 
-
+**查看当前数据库版本信息**
