@@ -1,12 +1,16 @@
-Mongidb 基础
-1.启动服务
+## Mongidb 基础
+
+##### 1.启动服务
+
 进入mongodb文件夹中bin位置,然后使用
 cd mongodb/bin
 ./mongod
 
-2.终端连接(连接数据库)
+##### 2.终端连接(连接数据库)
+
 cd mongodb/bin
 ./mongo
+
 显示如下信息表示成果
 ------------------------------------------------
 MongoDB shell version: 3.1.1
