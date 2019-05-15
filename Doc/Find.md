@@ -168,43 +168,47 @@ db.nums.find({
 
 ## limit skip & sort
 
-- limit
+### limit
 
   查询3个指定内容  
 
-  > db.c.find({}).limit(3)  
+```shell
+#  最多3个,少了则全部
+db.c.find({}).limit(3)
+```
 
-- 最多3个,少了则全部
+### skip
 
-- skip
+跳过指定数目
 
-  跳过前3个内容,返回余下的所有内容  
+```shell
+# 跳过前3个内容,返回余下的所有内容
+db.c.find({}).skip(3)  
+```
 
-  > db.c.find({}).skip(3)  
-
-- sort() 顺序
+### sort() 顺序
 
 倒序查询出来的数据,1表示升序 -1表示降序
 
-> db.c.find().sort({'_id':-1})
+```shell
+db.c.find().sort({'_id':-1})
 
-Mongoose中方法:
-> Module.find({}, {}, {sort: {'_id':-1}}, callback)
-> Module.find().sort({'_id': -1}).exec(callback)
+# 按照'usrname'升序,'age'降序
+db.c.find().sort({usrname:1, age: -1})
 
-按照'usrname'升序,'age'降序
+# 查询50条内容之后的50条数据,并按usrname升序和age降序
+db.c.find().limit(50).skip(50).sort({usrname:1, age: -1})
+```
 
-> db.c.find().sort({usrname:1, age: -1})
+##### Mongoose中方法:
 
-查询50条内容之后的50条数据,并按`usrname`升序和`age`降序
+```shell
+Module.find({}, {}, {sort: {'_id':-1}}, callback)
+# or
+Module.find().sort({'_id': -1}).exec(callback)
+```
 
-> db.c.find().limit(50).skip(50).sort({usrname:1, age: -1})  
-
-
-
-注 db.c.find() 中的 c 代指所要用到的集合
-
-
+> 注 db.c.find() 中的 c 代指所要用到的集合
 
 ### $elemMatch 
 
@@ -245,6 +249,17 @@ db.c.aggregate([
 [参考](https://docs.mongodb.com/manual/reference/method/db.collection.find/#query-an-array-of-documents)
 
 [参考2](http://stackoverflow.com/questions/16198429/mongodb-how-to-find-out-if-an-array-field-contains-an-element)
+
+
+
+## 模糊查询
+
+| MySQL                                    | Mongodb                              |
+| ---------------------------------------- | ------------------------------------ |
+| select * from usr where name like '%Tom%' | db.usr.find({name: {$regex: /Tom/}}) |
+| select * from usr where name regexp 'Tom' | db.usr.find({name: /Tom/})           |
+
+
 
 
 
